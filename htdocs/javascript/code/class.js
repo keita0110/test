@@ -82,3 +82,27 @@ var a2 = [1, 2, 3];
 var a3 = [1, 2, 3, 4];
 console.log("a1 と a2 があってるか", JSON.stringify(a1) === JSON.stringify(a2));
 console.log("a1 と a3 があってるか", JSON.stringify(a1) === JSON.stringify(a3));
+
+// 動きのある処理
+// DOM
+const button = document.getElementById('addButton');
+const lists = document.getElementById('lists');
+// 関数 (メソッド)
+async function getUsers() {
+// api取得
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const users = await res.json();
+    return users;
+}
+function addList(user) {
+    const list = document.createElement('li');
+    list.innerText = user.name;
+    lists.appendChild(list)
+}
+async function listUsers() {
+    const users = await getUsers();
+    users.forEach(addList);
+}
+// イベント
+window.addEventListener('load', listUsers);
+button.addEventListener('click', listUsers);
