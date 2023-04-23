@@ -26,8 +26,8 @@
       ball.vx = -ball.vx;
     }
 
-    raf = window.requestAnimationFrame(draw);
+    window.requestAnimationFrame(draw);
   }
 
-  raf = window.requestAnimationFrame(draw);
+  window.requestAnimationFrame(draw);
 })();
